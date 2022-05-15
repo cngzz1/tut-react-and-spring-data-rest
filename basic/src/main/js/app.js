@@ -1,13 +1,13 @@
 'use strict';
 
 // tag::vars[]
-const React = require('react'); // <1>
-const ReactDOM = require('react-dom'); // <2>
-const client = require('./client'); // <3>
+import { Component } from 'react'; // <1>
+import { render as _render } from 'react-dom'; // <2>
+import client from './client'; // <3>
 // end::vars[]
 
 // tag::app[]
-class App extends React.Component { // <1>
+class App extends Component { // <1>
 
 	constructor(props) {
 		super(props);
@@ -29,7 +29,7 @@ class App extends React.Component { // <1>
 // end::app[]
 
 // tag::employee-list[]
-class EmployeeList extends React.Component{
+class EmployeeList extends Component{
 	render() {
 		const employees = this.props.employees.map(employee =>
 			<Employee key={employee._links.self.href} employee={employee}/>
@@ -51,7 +51,7 @@ class EmployeeList extends React.Component{
 // end::employee-list[]
 
 // tag::employee[]
-class Employee extends React.Component{
+class Employee extends Component{
 	render() {
 		return (
 			<tr>
@@ -65,7 +65,7 @@ class Employee extends React.Component{
 // end::employee[]
 
 // tag::render[]
-ReactDOM.render(
+_render(
 	<App />,
 	document.getElementById('react')
 )
