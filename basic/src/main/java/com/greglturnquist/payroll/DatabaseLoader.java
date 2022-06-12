@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 /**
  * @author Greg Turnquist
  */
@@ -30,12 +32,13 @@ public class DatabaseLoader implements CommandLineRunner { // <2>
 
 	@Autowired // <3>
 	public DatabaseLoader(EmployeeRepository repository) {
-		this.repository = repository;
+		this.repository = Objects.requireNonNull(repository);
 	}
 
 	@Override
 	public void run(String... strings) throws Exception { // <4>
-		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
+		final Employee employee = new Employee("Frodo", "Baggins", "ring bearer");
+		repository.save(employee);
 	}
 }
 // end::code[]

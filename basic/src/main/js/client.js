@@ -1,5 +1,5 @@
 'use strict';
-
+// rest.js
 import { wrap } from 'rest';
 import defaultRequest from 'rest/interceptor/defaultRequest';
 import mime from 'rest/interceptor/mime';
